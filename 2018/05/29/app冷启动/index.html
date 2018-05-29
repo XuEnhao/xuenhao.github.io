@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>app冷启动 | 许恩浩</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。 在一个Activity打开时，如果该Activity所属的Application还没有启动，那么系统会为这个Activity创建一个进程，（要知道每创建一个进程都会走一次application的oncreate()方法，所以appl">
+  <meta name="description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。">
 <meta name="keywords" content="冷启动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="app冷启动">
 <meta property="og:url" content="http://yoursite.com/2018/05/29/app冷启动/index.html">
 <meta property="og:site_name" content="许恩浩">
-<meta property="og:description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。 在一个Activity打开时，如果该Activity所属的Application还没有启动，那么系统会为这个Activity创建一个进程，（要知道每创建一个进程都会走一次application的oncreate()方法，所以appl">
+<meta property="og:description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/app_style.png">
 <meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/app_manifest.png">
-<meta property="og:updated_time" content="2018-05-29T11:50:15.885Z">
+<meta property="og:updated_time" content="2018-05-29T11:53:21.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="app冷启动">
-<meta name="twitter:description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。 在一个Activity打开时，如果该Activity所属的Application还没有启动，那么系统会为这个Activity创建一个进程，（要知道每创建一个进程都会走一次application的oncreate()方法，所以appl">
+<meta name="twitter:description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。">
 <meta name="twitter:image" content="http://p92o6yr9p.bkt.clouddn.com/app_style.png">
   
     <link rel="alternative" href="/atom.xml" title="许恩浩" type="application/atom+xml">
@@ -171,7 +171,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天闲着无聊给大家搞个冷启动吧</p>
-<p>冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。</p>
+<p>冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。<br><a id="more"></a></p>
 <p>在一个Activity打开时，如果该Activity所属的Application还没有启动，那么系统会为这个Activity创建一个进程，（要知道每创建一个进程都会走一次application的oncreate()方法，所以application不一定是创建一次）然后才去真正的加载布局，如果这个时间过长，而默认的背景又是黑色或者白色，这样会给用户造成一种错觉，这个APP很卡，很不流畅，自然也影响了用户体验。</p>
 <p>我们冷启动的时候会经历一段白屏时间，这个时间如果让用户看到会很不好，所以我们一般的做法就是把windowbackgroud设置为引导页的背景，也就是白屏的那一段时间让他展示的是引导页的背景，看具体如何做：</p>
 <p>首先我们要把启动页的style设置成这样的：</p>
