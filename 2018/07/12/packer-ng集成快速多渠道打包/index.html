@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 冷启动 | 许恩浩</title>
+  <title>packer-ng集成快速多渠道打包 | 许恩浩</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="许恩浩">
-<meta property="og:url" content="http://yoursite.com/tags/冷启动/index.html">
+  <meta name="description" content="今天给大家更新一期快速打包工具Packer_ng，我的项目中是集成了友盟多渠道打包的。">
+<meta name="keywords" content="快速多渠道打包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="packer-ng集成快速多渠道打包">
+<meta property="og:url" content="http://yoursite.com/2018/07/12/packer-ng集成快速多渠道打包/index.html">
 <meta property="og:site_name" content="许恩浩">
+<meta property="og:description" content="今天给大家更新一期快速打包工具Packer_ng，我的项目中是集成了友盟多渠道打包的。">
 <meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_project.png">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_module.png">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_v2.png">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_compile.png">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_channel.png">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_properties.png">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_application.png">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_successful.png">
+<meta property="og:updated_time" content="2018-07-12T07:09:08.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="许恩浩">
+<meta name="twitter:title" content="packer-ng集成快速多渠道打包">
+<meta name="twitter:description" content="今天给大家更新一期快速打包工具Packer_ng，我的项目中是集成了友盟多渠道打包的。">
+<meta name="twitter:image" content="http://p92o6yr9p.bkt.clouddn.com/packer_project.png">
   
     <link rel="alternative" href="/atom.xml" title="许恩浩" type="application/atom+xml">
   
@@ -142,60 +156,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-packer-ng集成快速多渠道打包" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/29/app冷启动/" class="archive-article-date">
-  	<time datetime="2018-05-29T10:05:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/app冷启动/">app冷启动</a>
+    <h1 class="article-title" itemprop="name">
+      packer-ng集成快速多渠道打包
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/12/packer-ng集成快速多渠道打包/" class="archive-article-date">
+  	<time datetime="2018-07-12T06:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天给大家更新一期快速打包工具Packer_ng，我的项目中是集成了友盟多渠道打包的。<a id="more"></a>所以在集成这个前要看看友盟的代码注册，不要用在AndroidManifest.xml的meta-data的方式，而且这个工具<br>也不支持productFlavors所以有这些的同学们还是先把这些删除掉吧。</p>
+<p>1.首先要在工程的build.gradle添加<br>  classpath ‘com.mcxiaoke.gradle:packer-ng:1.0.8’<br>  <img src="http://p92o6yr9p.bkt.clouddn.com/packer_project.png" alt=""></p>
+<p>2.要在module的build.gradle里添加：<br>apply plugin: ‘packer’</p>
+<p> packer {<br>        // 是否检查Gradle配置中的signingConfig，默认不检查<br>        checkSigningConfig = true<br>        // 是否检查Gradle配置中的zipAlignEnabled，默认不检查<br>        checkZipAlign = true<br>        // 指定渠道打包输出文件名格式<br>        //包名-渠道名-正式环境（release）-版本名称-版本号-最终APK文件的MD5哈希值<br>        archiveNameFormat = ‘${appPkg}-${flavorName}-${buildType}-v${versionName}-${versionCode}-${buildTime}’<br>        // 指定渠道打包输出目录<br>        archiveOutput = file(new File(project.rootProject.buildDir.path, “academy_apks”))<br>/<em>         // 指定渠道打包需要修改的AndroidManifest文件项<br>         manifestMatcher = [‘UMENG_CHANNEL’, ‘Promotion_Market’]<br>        // 指定是否使用build版本号自增<br>        buildNumberAuto = true<br>        // 指定使用版本号自增的buildType，默认是全部<br>        buildNumberTypeMatcher = [‘release’, ‘beta’]</em>/<br>    }<br><img src="http://p92o6yr9p.bkt.clouddn.com/packer_module.png" alt=""><br> v2SigningEnabled false<br><img src="http://p92o6yr9p.bkt.clouddn.com/packer_v2.png" alt=""><br>然后就是依赖了：<br> compile ‘com.mcxiaoke.gradle:packer-helper:1.0.8’<br><img src="http://p92o6yr9p.bkt.clouddn.com/packer_compile.png" alt=""><br>注：记得插件的版本要和依赖的版本一致！！！</p>
+<p>3.创建一个text的渠道文件 channels.txt<br>里边写上各种渠道信息（#）是注释的意思<br><img src="http://p92o6yr9p.bkt.clouddn.com/packer_channel.png" alt=""></p>
+<p>4.在 gradle.properties 加上 -Pmarket=app/channels.txt<br><img src="http://p92o6yr9p.bkt.clouddn.com/packer_properties.png" alt=""></p>
+<p>5.然后在application中:<br>xxxx就是appkey</p>
+<p> final String market = PackerNg.getMarket(this);<br>友盟可以这样设置<br>        MobclickAgent. startWithConfigure( new MobclickAgent.UMAnalyticsConfig(this, “xxxxx”, market, MobclickAgent.EScenarioType.E_UM_NORMAL,true));<br>        <img src="http://p92o6yr9p.bkt.clouddn.com/packer_application.png" alt=""></p>
+<p>6.到这里就进入结尾了<br>在Terminal里输入：./gradlew -Pmarket=app/channels.txt clean apkRelease 静静地等待打包完成<br><img src="http://p92o6yr9p.bkt.clouddn.com/packer_successful.png" alt=""><br>等到出现了BUILD SUCCESSFUL 就可以在上边packer{}中配置的输出目录里找到你所打包的渠道包了。</p>
+<p>这期多渠道打包就到这里了，如果觉得不错点个打赏吧。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://p92o6yr9p.bkt.clouddn.com/aliPay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://p92o6yr9p.bkt.clouddn.com/wechatPay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">冷启动</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">快速多渠道打包</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/12/packer-ng集成快速多渠道打包/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/07/03/EventBus的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">EventBus的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -218,9 +358,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
