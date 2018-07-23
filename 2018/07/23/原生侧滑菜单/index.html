@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 许恩浩</title>
+  <title>原生侧滑菜单 | 许恩浩</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="许恩浩">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/2/index.html">
+  <meta name="description" content="今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。">
+<meta name="keywords" content="DrawerLayout">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生侧滑菜单">
+<meta property="og:url" content="http://yoursite.com/2018/07/23/原生侧滑菜单/index.html">
 <meta property="og:site_name" content="许恩浩">
+<meta property="og:description" content="今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。">
 <meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_main_xml.png">
+<meta property="og:updated_time" content="2018-07-23T09:24:39.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="许恩浩">
+<meta name="twitter:title" content="原生侧滑菜单">
+<meta name="twitter:description" content="今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。">
+<meta name="twitter:image" content="http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_main_xml.png">
   
     <link rel="alternative" href="/atom.xml" title="许恩浩" type="application/atom+xml">
   
@@ -142,90 +149,272 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-原生侧滑菜单" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/29/app冷启动/" class="archive-article-date">
-  	<time datetime="2018-05-29T10:05:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/app冷启动/">app冷启动</a>
+    <h1 class="article-title" itemprop="name">
+      原生侧滑菜单
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/23/原生侧滑菜单/" class="archive-article-date">
+  	<time datetime="2018-07-23T09:06:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。<br><a id="more"></a><br>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
+<p>&lt;android.support.v4.widget.DrawerLayout xmlns:android=”<a href="http://schemas.android.com/apk/res/android&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android&quot;</a><br>    xmlns:app=”<a href="http://schemas.android.com/apk/res-auto&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res-auto&quot;</a><br>    xmlns:tools=”<a href="http://schemas.android.com/tools&quot;" target="_blank" rel="noopener">http://schemas.android.com/tools&quot;</a><br>    android:layout_width=”match_parent”<br>    android:id=”@+id/drawerLayout”<br>    android:layout_height=”match_parent”<br>    tools:context=”com.onenineoneone.drawerlayoutdemo.MainActivity”&gt;</p>
+<pre><code>&lt;LinearLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:gravity=&quot;center&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;我是主内容&quot;/&gt;
+    &lt;Button
+        android:id=&quot;@+id/show_left&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;显示侧滑菜单&quot;/&gt;
+&lt;/LinearLayout&gt;
+
+&lt;LinearLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:gravity=&quot;center&quot;
+    android:id=&quot;@+id/left&quot;
+    android:background=&quot;#ffffff&quot;
+    android:layout_gravity=&quot;left&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;我是抽屉内容&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code></pre><p>&lt;/android.support.v4.widget.DrawerLayout&gt;</p>
+<p><img src="http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_main_xml.png" alt=""></p>
+<p>注意：</p>
+<p>1、第二个要侧滑的控件必须指定 android:layout_gravity属性，当属性值设为left的话侧滑菜单位于左边，right位于右面。</p>
+<p>2、指定了侧滑菜单的宽度，但是不能够超过320dp，覆盖整个屏幕肯定不好看了。</p>
+<p>DrawerLayout继承自ViewGroup可以当作相对布局来用，第一个控件是主视图，第二个控件就是你要侧滑的那个视图。其中android:layout_gravity=”left” 就是我希望这个视图在左边，当然也可以right。</p>
+<p>MainActivity代码：</p>
+<p>public class MainActivity extends AppCompatActivity {</p>
+<pre><code>private ActionBarDrawerToggle drawerbar;
+private DrawerLayout drawerLayout;
+private LinearLayout left;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    //抽屉菜单
+    drawerLayout = findViewById(R.id.drawerLayout);
+    //侧滑展示的布局
+    left = findViewById(R.id.left);
+    findViewById(R.id.show_left).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openLeftLayout();
+        }
+    });
+
+    initDrawerLayout();
+}
+
+/**
+ * 初始化抽屉菜单
+ */
+private void initDrawerLayout() {
+    drawerbar = new ActionBarDrawerToggle(this, drawerLayout, R.mipmap.ic_launcher, 0, 1) {
+        //菜单打开
+        @Override
+        public void onDrawerOpened(View drawerView) {
+            super.onDrawerOpened(drawerView);
+            //打开的时候 可以滑动
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        }
+
+        // 菜单关闭
+        @Override
+        public void onDrawerClosed(View drawerView) {
+            super.onDrawerClosed(drawerView);
+            //关闭的时候 不可以滑动打开 默认可以滑动 具体根据需求
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
+    };
+
+    drawerLayout.setDrawerListener(drawerbar);
+
+
+}
+// 右边菜单开关事件
+public void openLeftLayout() {
+    //left布局是否展开
+    if (drawerLayout.isDrawerOpen(left)) {
+        drawerLayout.closeDrawer(left);
+    } else {
+        drawerLayout.openDrawer(left);
+    }
+}
+</code></pre><p>}</p>
+<p>注释写的很详细了。</p>
+<p>效果图链接：<a href="http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_success.mp4" target="_blank" rel="noopener">http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_success.mp4</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://p92o6yr9p.bkt.clouddn.com/aliPay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://p92o6yr9p.bkt.clouddn.com/wechatPay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">冷启动</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DrawerLayout</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/23/原生侧滑菜单/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/21/创建博客的第一天/" class="archive-article-date">
-  	<time datetime="2018-05-21T08:59:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/12/packer-ng集成快速多渠道打包/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">packer-ng集成快速多渠道打包</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/21/创建博客的第一天/">创建博客的第一天</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
   
 
 
@@ -249,8 +438,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
