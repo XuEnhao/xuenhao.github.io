@@ -17,7 +17,7 @@
 <meta property="og:description" content="今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_main_xml.png">
-<meta property="og:updated_time" content="2018-07-23T09:24:39.108Z">
+<meta property="og:updated_time" content="2018-09-10T11:10:44.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原生侧滑菜单">
 <meta name="twitter:description" content="今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。">
@@ -169,101 +169,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。<br><a id="more"></a><br>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
-<p>&lt;android.support.v4.widget.DrawerLayout xmlns:android=”<a href="http://schemas.android.com/apk/res/android&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android&quot;</a><br>    xmlns:app=”<a href="http://schemas.android.com/apk/res-auto&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res-auto&quot;</a><br>    xmlns:tools=”<a href="http://schemas.android.com/tools&quot;" target="_blank" rel="noopener">http://schemas.android.com/tools&quot;</a><br>    android:layout_width=”match_parent”<br>    android:id=”@+id/drawerLayout”<br>    android:layout_height=”match_parent”<br>    tools:context=”com.onenineoneone.drawerlayoutdemo.MainActivity”&gt;</p>
-<pre><code>&lt;LinearLayout
-    android:layout_width=&quot;match_parent&quot;
-    android:orientation=&quot;horizontal&quot;
-    android:gravity=&quot;center&quot;
-    android:layout_height=&quot;match_parent&quot;&gt;
-    &lt;TextView
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;我是主内容&quot;/&gt;
-    &lt;Button
-        android:id=&quot;@+id/show_left&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;显示侧滑菜单&quot;/&gt;
-&lt;/LinearLayout&gt;
-
-&lt;LinearLayout
-    android:layout_width=&quot;match_parent&quot;
-    android:gravity=&quot;center&quot;
-    android:id=&quot;@+id/left&quot;
-    android:background=&quot;#ffffff&quot;
-    android:layout_gravity=&quot;left&quot;
-    android:layout_height=&quot;match_parent&quot;&gt;
-    &lt;TextView
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;我是抽屉内容&quot;/&gt;
-&lt;/LinearLayout&gt;
-</code></pre><p>&lt;/android.support.v4.widget.DrawerLayout&gt;</p>
+        <p>今天给大家分享一期Android原生侧滑菜单DrawerLayout，这期内容比较少，那就话不多说开始搞，直接上代码。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.v4.widget.DrawerLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:id=&quot;@+id/drawerLayout&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;com.onenineoneone.drawerlayoutdemo.MainActivity&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:orientation=&quot;horizontal&quot;</span><br><span class="line">        android:gravity=&quot;center&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;我是主内容&quot;/&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/show_left&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;显示侧滑菜单&quot;/&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:gravity=&quot;center&quot;</span><br><span class="line">        android:id=&quot;@+id/left&quot;</span><br><span class="line">        android:background=&quot;#ffffff&quot;</span><br><span class="line">        android:layout_gravity=&quot;left&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;我是抽屉内容&quot;/&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.v4.widget.DrawerLayout&gt;</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_main_xml.png" alt=""></p>
 <p>注意：</p>
 <p>1、第二个要侧滑的控件必须指定 android:layout_gravity属性，当属性值设为left的话侧滑菜单位于左边，right位于右面。</p>
 <p>2、指定了侧滑菜单的宽度，但是不能够超过320dp，覆盖整个屏幕肯定不好看了。</p>
 <p>DrawerLayout继承自ViewGroup可以当作相对布局来用，第一个控件是主视图，第二个控件就是你要侧滑的那个视图。其中android:layout_gravity=”left” 就是我希望这个视图在左边，当然也可以right。</p>
 <p>MainActivity代码：</p>
-<p>public class MainActivity extends AppCompatActivity {</p>
-<pre><code>private ActionBarDrawerToggle drawerbar;
-private DrawerLayout drawerLayout;
-private LinearLayout left;
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-    //抽屉菜单
-    drawerLayout = findViewById(R.id.drawerLayout);
-    //侧滑展示的布局
-    left = findViewById(R.id.left);
-    findViewById(R.id.show_left).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            openLeftLayout();
-        }
-    });
-
-    initDrawerLayout();
-}
-
-/**
- * 初始化抽屉菜单
- */
-private void initDrawerLayout() {
-    drawerbar = new ActionBarDrawerToggle(this, drawerLayout, R.mipmap.ic_launcher, 0, 1) {
-        //菜单打开
-        @Override
-        public void onDrawerOpened(View drawerView) {
-            super.onDrawerOpened(drawerView);
-            //打开的时候 可以滑动
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-        }
-
-        // 菜单关闭
-        @Override
-        public void onDrawerClosed(View drawerView) {
-            super.onDrawerClosed(drawerView);
-            //关闭的时候 不可以滑动打开 默认可以滑动 具体根据需求
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-        }
-    };
-
-    drawerLayout.setDrawerListener(drawerbar);
-
-
-}
-// 右边菜单开关事件
-public void openLeftLayout() {
-    //left布局是否展开
-    if (drawerLayout.isDrawerOpen(left)) {
-        drawerLayout.closeDrawer(left);
-    } else {
-        drawerLayout.openDrawer(left);
-    }
-}
-</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private ActionBarDrawerToggle drawerbar;</span><br><span class="line">    private DrawerLayout drawerLayout;</span><br><span class="line">    private LinearLayout left;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        //抽屉菜单</span><br><span class="line">        drawerLayout = findViewById(R.id.drawerLayout);</span><br><span class="line">        //侧滑展示的布局</span><br><span class="line">        left = findViewById(R.id.left);</span><br><span class="line">        findViewById(R.id.show_left).setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                openLeftLayout();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        initDrawerLayout();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 初始化抽屉菜单</span><br><span class="line">     */</span><br><span class="line">    private void initDrawerLayout() &#123;</span><br><span class="line">        drawerbar = new ActionBarDrawerToggle(this, drawerLayout, R.mipmap.ic_launcher, 0, 1) &#123;</span><br><span class="line">            //菜单打开</span><br><span class="line">            @Override</span><br><span class="line">            public void onDrawerOpened(View drawerView) &#123;</span><br><span class="line">                super.onDrawerOpened(drawerView);</span><br><span class="line">                //打开的时候 可以滑动</span><br><span class="line">                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 菜单关闭</span><br><span class="line">            @Override</span><br><span class="line">            public void onDrawerClosed(View drawerView) &#123;</span><br><span class="line">                super.onDrawerClosed(drawerView);</span><br><span class="line">                //关闭的时候 不可以滑动打开 默认可以滑动 具体根据需求</span><br><span class="line">                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        drawerLayout.setDrawerListener(drawerbar);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    // 右边菜单开关事件</span><br><span class="line">    public void openLeftLayout() &#123;</span><br><span class="line">        //left布局是否展开</span><br><span class="line">        if (drawerLayout.isDrawerOpen(left)) &#123;</span><br><span class="line">            drawerLayout.closeDrawer(left);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            drawerLayout.openDrawer(left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注释写的很详细了。</p>
 <p>效果图链接：<a href="http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_success.mp4" target="_blank" rel="noopener">http://p92o6yr9p.bkt.clouddn.com/DrawerLayout_success.mp4</a></p>
 

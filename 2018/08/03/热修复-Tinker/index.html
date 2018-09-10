@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/tinker_app2.png">
 <meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/tinker_add3.png">
 <meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/tinker_result.jpg">
-<meta property="og:updated_time" content="2018-08-03T07:42:05.162Z">
+<meta property="og:updated_time" content="2018-09-10T11:08:35.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="热修复-Tinker">
 <meta name="twitter:description" content="相信大家肯定遇到过在项目上线的时候，突然发现了一个严重的bug需要修复，难道又要重新打包，然后上线吗？只是为了修改一个bug，这个时候就可以用到热修复啦。">
@@ -193,113 +193,22 @@
 <p>然后在app的gradle文件app/build.gradle中加入<br>   provided(“com.tinkerpatch.tinker:tinker-android-anno:1.9.8”)<br>    compile(“com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.8”)</p>
 <p><img src="http://p92o6yr9p.bkt.clouddn.com/tinker_app_complie.png" alt=""></p>
 <p>记得签名jks信息要配置。<br><img src="http://p92o6yr9p.bkt.clouddn.com/tinker_app_jks.png" alt=""></p>
-<p>在app目录下，创建tinkerpatch.gradle,然后把下边的代码 完整的拷贝进去：</p>
-<p>apply plugin: ‘tinkerpatch-support’</p>
-<p>/**</p>
-<ul>
-<li>TODO: 请按自己的需求修改为适应自己工程的参数<br>*/<br>def bakPath = file(“${buildDir}/bakApk/“)<br>def baseInfo = “app-1.0.0-0330-20-37-31” 这个名字换成你包所在的文件夹<br>def variantName = “release”</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>对于插件各参数的详细解析请参考</li>
-<li><p><a href="http://tinkerpatch.com/Docs/SDK" target="_blank" rel="noopener">http://tinkerpatch.com/Docs/SDK</a><br>*/<br>tinkerpatchSupport {<br> /<strong> 可以在debug的时候关闭 tinkerPatch </strong>/<br> tinkerEnable = true<br> reflectApplication = true</p>
-<p> autoBackupApkPath = “${bakPath}”</p>
-<p> appKey = “你的appkey”// 注意！！！  需要修改成你的appkey</p>
-<p> /<strong> 注意: 若发布新的全量包, appVersion一定要更新 </strong>/<br> appVersion = “1.0.0”</p>
-<p> def pathPrefix = “${bakPath}/${baseInfo}/${variantName}/“<br> def name = “${project.name}-${variantName}”</p>
-<p> baseApkFile = “${pathPrefix}/${name}.apk”<br> baseProguardMappingFile = “${pathPrefix}/${name}-mapping.txt”<br> baseResourceRFile = “${pathPrefix}/${name}-R.txt”<br> /**</p>
-<ul>
-<li>若有编译多flavors需求, 可以参照： <a href="https://github.com/TinkerPatch/tinkerpatch-flavors-sample" target="_blank" rel="noopener">https://github.com/TinkerPatch/tinkerpatch-flavors-sample</a></li>
-<li>注意: 除非你不同的flavor代码是不一样的,不然建议采用zip comment或者文件方式生成渠道信息（相关工具：walle 或者 packer-ng）<br>**/<br>}</li>
-</ul>
-</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>用于用户在代码中判断tinkerPatch是否被使能<br>*/<br>android {<br> defaultConfig {<pre><code>buildConfigField &quot;boolean&quot;, &quot;TINKER_ENABLE&quot;, &quot;${tinkerpatchSupport.tinkerEnable}&quot;
-</code></pre> }<br>}<br>/**</li>
-<li>一般来说,我们无需对下面的参数做任何的修改</li>
-<li>对于各参数的详细介绍请参考:</li>
-<li><p><a href="https://github.com/Tencent/tinker/wiki/Tinker-%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97" target="_blank" rel="noopener">https://github.com/Tencent/tinker/wiki/Tinker-%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97</a><br>*/<br>tinkerPatch {<br> ignoreWarning = false<br> useSign = true<br> dex {</p>
-<pre><code>dexMode = &quot;jar&quot;
-pattern = [&quot;classes*.dex&quot;]
-loader = []
-</code></pre><p> }<br> lib {</p>
-<pre><code>pattern = [&quot;lib/*/*.so&quot;]
-</code></pre><p> }</p>
-<p> res {</p>
-<pre><code>pattern = [&quot;res/*&quot;, &quot;r/*&quot;, &quot;assets/*&quot;, &quot;resources.arsc&quot;, &quot;AndroidManifest.xml&quot;]
-ignoreChange = []
-largeModSize = 100
-</code></pre><p> }<br>packageConfig {<br> }<br> sevenZip {</p>
-<pre><code>zipArtifact = &quot;com.tencent.mm:SevenZip:1.1.10&quot;
-</code></pre><p>//        path = “/usr/local/bin/7za”<br> }<br> buildConfig {</p>
-<pre><code>keepDexApply = false
-</code></pre><p> }<br>}</p>
-</li>
-</ul>
+<p>在app目录下，创建tinkerpatch.gradle,然后把下边的代码 完整的拷贝进去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;tinkerpatch-support&apos;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * TODO: 请按自己的需求修改为适应自己工程的参数</span><br><span class="line"> */</span><br><span class="line">def bakPath = file(&quot;$&#123;buildDir&#125;/bakApk/&quot;)</span><br><span class="line">def baseInfo = &quot;app-1.0.0-0330-20-37-31&quot; 这个名字换成你包所在的文件夹</span><br><span class="line">def variantName = &quot;release&quot;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 对于插件各参数的详细解析请参考</span><br><span class="line"> * http://tinkerpatch.com/Docs/SDK</span><br><span class="line"> */</span><br><span class="line">tinkerpatchSupport &#123;</span><br><span class="line">    /** 可以在debug的时候关闭 tinkerPatch **/</span><br><span class="line">    tinkerEnable = true</span><br><span class="line">    reflectApplication = true</span><br><span class="line"></span><br><span class="line">    autoBackupApkPath = &quot;$&#123;bakPath&#125;&quot;</span><br><span class="line"></span><br><span class="line">    appKey = &quot;你的appkey&quot;// 注意！！！  需要修改成你的appkey</span><br><span class="line"></span><br><span class="line">    /** 注意: 若发布新的全量包, appVersion一定要更新 **/</span><br><span class="line">    appVersion = &quot;1.0.0&quot;</span><br><span class="line"></span><br><span class="line">    def pathPrefix = &quot;$&#123;bakPath&#125;/$&#123;baseInfo&#125;/$&#123;variantName&#125;/&quot;</span><br><span class="line">    def name = &quot;$&#123;project.name&#125;-$&#123;variantName&#125;&quot;</span><br><span class="line"></span><br><span class="line">    baseApkFile = &quot;$&#123;pathPrefix&#125;/$&#123;name&#125;.apk&quot;</span><br><span class="line">    baseProguardMappingFile = &quot;$&#123;pathPrefix&#125;/$&#123;name&#125;-mapping.txt&quot;</span><br><span class="line">    baseResourceRFile = &quot;$&#123;pathPrefix&#125;/$&#123;name&#125;-R.txt&quot;</span><br><span class="line">    /**</span><br><span class="line">     *  若有编译多flavors需求, 可以参照： https://github.com/TinkerPatch/tinkerpatch-flavors-sample</span><br><span class="line">     *  注意: 除非你不同的flavor代码是不一样的,不然建议采用zip comment或者文件方式生成渠道信息（相关工具：walle 或者 packer-ng）</span><br><span class="line">     **/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 用于用户在代码中判断tinkerPatch是否被使能</span><br><span class="line"> */</span><br><span class="line">android &#123;</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        buildConfigField &quot;boolean&quot;, &quot;TINKER_ENABLE&quot;, &quot;$&#123;tinkerpatchSupport.tinkerEnable&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 一般来说,我们无需对下面的参数做任何的修改</span><br><span class="line"> * 对于各参数的详细介绍请参考:</span><br><span class="line"> * https://github.com/Tencent/tinker/wiki/Tinker-%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97</span><br><span class="line"> */</span><br><span class="line">tinkerPatch &#123;</span><br><span class="line">    ignoreWarning = false</span><br><span class="line">    useSign = true</span><br><span class="line">    dex &#123;</span><br><span class="line">        dexMode = &quot;jar&quot;</span><br><span class="line">        pattern = [&quot;classes*.dex&quot;]</span><br><span class="line">        loader = []</span><br><span class="line">    &#125;</span><br><span class="line">    lib &#123;</span><br><span class="line">        pattern = [&quot;lib/*/*.so&quot;]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res &#123;</span><br><span class="line">        pattern = [&quot;res/*&quot;, &quot;r/*&quot;, &quot;assets/*&quot;, &quot;resources.arsc&quot;, &quot;AndroidManifest.xml&quot;]</span><br><span class="line">        ignoreChange = []</span><br><span class="line">        largeModSize = 100</span><br><span class="line">    &#125;</span><br><span class="line">packageConfig &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    sevenZip &#123;</span><br><span class="line">        zipArtifact = &quot;com.tencent.mm:SevenZip:1.1.10&quot;</span><br><span class="line">//        path = &quot;/usr/local/bin/7za&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    buildConfig &#123;</span><br><span class="line">        keepDexApply = false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>将 TinkerPatch 相关的配置都放于tinkerpatch.gradle中,然后在app的gradle文件app/build.gradle中添加<br>apply from: ‘tinkerpatch.gradle’</p>
 <p>appkey就是你在tinkerpatch平台注册应用会有个appkey</p>
-<p>创建FetchPatchHandler用于检测是否更新（刚打开时会检测一次）</p>
-<p>public class FetchPatchHandler extends Handler {<br>    public static final long HOUR_INTERVAL = 3600 * 1000;<br>    private long checkInterval;</p>
-<pre><code>/**
- * 通过handler, 达到按照时间间隔轮训的效果
- * @param hour
- */
-public void fetchPatchWithInterval(int hour) {
-    //设置TinkerPatch的时间间隔
-    TinkerPatch.with().setFetchPatchIntervalByHours(hour);
-    checkInterval = hour * HOUR_INTERVAL;
-    //立刻尝试去访问,检查是否有更新
-    sendEmptyMessage(0);
-}
-@Override
-public void handleMessage(Message msg) {
-    super.handleMessage(msg);
-
-    //这里使用false即可
-    TinkerPatch.with().fetchPatchUpdate(false);
-    //每隔一段时间都去访问后台, 增加10分钟的buffer时间
-    sendEmptyMessageDelayed(0, checkInterval + 10 * 60 * 1000);
-}
-</code></pre><p>}</p>
+<p>创建FetchPatchHandler用于检测是否更新（刚打开时会检测一次）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class FetchPatchHandler extends Handler &#123;</span><br><span class="line">    public static final long HOUR_INTERVAL = 3600 * 1000;</span><br><span class="line">    private long checkInterval;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 通过handler, 达到按照时间间隔轮训的效果</span><br><span class="line">     * @param hour</span><br><span class="line">     */</span><br><span class="line">    public void fetchPatchWithInterval(int hour) &#123;</span><br><span class="line">        //设置TinkerPatch的时间间隔</span><br><span class="line">        TinkerPatch.with().setFetchPatchIntervalByHours(hour);</span><br><span class="line">        checkInterval = hour * HOUR_INTERVAL;</span><br><span class="line">        //立刻尝试去访问,检查是否有更新</span><br><span class="line">        sendEmptyMessage(0);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void handleMessage(Message msg) &#123;</span><br><span class="line">        super.handleMessage(msg);</span><br><span class="line"></span><br><span class="line">        //这里使用false即可</span><br><span class="line">        TinkerPatch.with().fetchPatchUpdate(false);</span><br><span class="line">        //每隔一段时间都去访问后台, 增加10分钟的buffer时间</span><br><span class="line">        sendEmptyMessageDelayed(0, checkInterval + 10 * 60 * 1000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>创建MyApplication初始化(reflectApplication = true 时)</p>
 <p><img src="http://p92o6yr9p.bkt.clouddn.com/tinker_app.png" alt=""></p>
-<p>public class MyApplication extends Application{</p>
-<pre><code>ApplicationLike tinkerApplicationLike;
-@Override
-public void onCreate() {
-    super.onCreate();
-    if (BuildConfig.TINKER_ENABLE) {
-
-        // 我们可以从这里获得Tinker加载过程的信息
-        tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
-
-        // 初始化TinkerPatch SDK, 更多配置可参照API章节中的,初始化SDK
-        TinkerPatch.init(tinkerApplicationLike)
-                .reflectPatchLibrary()
-                .setPatchRollbackOnScreenOff(true)
-                .setPatchRestartOnSrceenOff(true);
-
-        // 每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
-        new FetchPatchHandler().fetchPatchWithInterval(3);
-        Log.i(&quot;TAG&quot;, &quot;tinker init&quot;);
-    }
-
-}
-</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class MyApplication extends Application&#123;</span><br><span class="line"></span><br><span class="line">    ApplicationLike tinkerApplicationLike;</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        if (BuildConfig.TINKER_ENABLE) &#123;</span><br><span class="line"></span><br><span class="line">            // 我们可以从这里获得Tinker加载过程的信息</span><br><span class="line">            tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();</span><br><span class="line"></span><br><span class="line">            // 初始化TinkerPatch SDK, 更多配置可参照API章节中的,初始化SDK</span><br><span class="line">            TinkerPatch.init(tinkerApplicationLike)</span><br><span class="line">                    .reflectPatchLibrary()</span><br><span class="line">                    .setPatchRollbackOnScreenOff(true)</span><br><span class="line">                    .setPatchRestartOnSrceenOff(true);</span><br><span class="line"></span><br><span class="line">            // 每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果</span><br><span class="line">            new FetchPatchHandler().fetchPatchWithInterval(3);</span><br><span class="line">            Log.i(&quot;TAG&quot;, &quot;tinker init&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后在记得在Manifest.xml中配置Application，还要给SD卡读写权限</p>
-<manifest><br><br>    <uses-permission android:name="android.permission.INTERNET"><br>    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"><br>    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"><br>    <application ...="" android:name=".MyApplication"><br></application></uses-permission></uses-permission></uses-permission></manifest>
-
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest &gt;</span><br><span class="line"></span><br><span class="line">    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</span><br><span class="line">    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br><span class="line">    &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;/&gt;</span><br><span class="line">    &lt;application</span><br><span class="line">       ...</span><br><span class="line">       android:name=&quot;.MyApplication&quot;&gt;</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
 <p>每次开发完成后，开始打包。<br>打开Studio右侧的Gradle，选择assemableRelease打正式包</p>
 <p><img src="http://p92o6yr9p.bkt.clouddn.com/tinker_gradle_1.png" alt=""></p>
 <p>完成后可以在文件夹build中找到生成的文件</p>
 <p><img src="http://p92o6yr9p.bkt.clouddn.com/tinker_bakapk.png" alt=""></p>
 <p>然后把这个apk安装到手机上</p>
 <p><img src="http://p92o6yr9p.bkt.clouddn.com/tinker_old.jpg" alt=""></p>
-<p>这里模拟一个修补bug的场景，发一个热补丁，弹一个Toast。</p>
-<p>Toast.makeText(this,”this is patchApk”,Toast.LENGTH_LONG).show();</p>
+<p>这里模拟一个修补bug的场景，发一个热补丁，弹一个Toast。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(this,&quot;this is patchApk&quot;,Toast.LENGTH_LONG).show();</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://p92o6yr9p.bkt.clouddn.com/tinker_baseinfo.png" alt=""></p>
 <p>这个baseInfo一定是你刚才打出来的包所在的文件夹名字</p>
 <p>修改tinkerpatch.gradle中的tinkerpatchSupport -&gt; appVersion</p>
