@@ -16,14 +16,13 @@
 <meta property="og:site_name" content="许恩浩">
 <meta property="og:description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/app_style.png">
-<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/app_manifest.png">
-<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/app_result1.mp4">
-<meta property="og:updated_time" content="2018-05-29T12:42:53.771Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/app_style.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/app_manifest.png">
+<meta property="og:updated_time" content="2018-12-03T02:15:59.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="app冷启动">
 <meta name="twitter:description" content="今天闲着无聊给大家搞个冷启动吧 冷启动时间：冷启动时间是指用户从手机桌面点击APP的那一刻起到启动页面的Activity调用onCreate()方法之间的这个时间段。">
-<meta name="twitter:image" content="http://p92o6yr9p.bkt.clouddn.com/app_style.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/app_style.png">
   
     <link rel="alternative" href="/atom.xml" title="许恩浩" type="application/atom+xml">
   
@@ -176,10 +175,10 @@
 <p>在一个Activity打开时，如果该Activity所属的Application还没有启动，那么系统会为这个Activity创建一个进程，（要知道每创建一个进程都会走一次application的oncreate()方法，所以application不一定是创建一次）然后才去真正的加载布局，如果这个时间过长，而默认的背景又是黑色或者白色，这样会给用户造成一种错觉，这个APP很卡，很不流畅，自然也影响了用户体验。</p>
 <p>我们冷启动的时候会经历一段白屏时间，这个时间如果让用户看到会很不好，所以我们一般的做法就是把windowbackgroud设置为引导页的背景，也就是白屏的那一段时间让他展示的是引导页的背景，看具体如何做：</p>
 <p>首先我们要把启动页的style设置成这样的：</p>
-<p><img src="http://p92o6yr9p.bkt.clouddn.com/app_style.png" alt=""><br>相信前两个同学们知道是什么意思，我就直接从后边开始了。<br>android:windowFullscreen  这个属性的意思就是是否充满屏幕<br>android:windowContentOverlay 意思就是 是否有遮盖<br>android:windowBackground     这个属性的意思就是你要设置的背景</p>
-<p>然后在Manifest.xml中把要设置的导航页加上一行设置theme的代码<br><img src="http://p92o6yr9p.bkt.clouddn.com/app_manifest.png" alt=""></p>
-<p>然后就可以运行啦，最后来看一下效果吧：</p>
-<p><img src="http://p92o6yr9p.bkt.clouddn.com/app_result1.mp4" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/app_style.png" alt=""><br>相信前两个同学们知道是什么意思，我就直接从后边开始了。<br>android:windowFullscreen  这个属性的意思就是是否充满屏幕<br>android:windowContentOverlay 意思就是 是否有遮盖<br>android:windowBackground     这个属性的意思就是你要设置的背景</p>
+<p>然后在Manifest.xml中把要设置的导航页加上一行设置theme的代码<br><img src="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/app_manifest.png" alt=""></p>
+<p>然后就可以运行啦。</p>
+<p>因为域名无法在国内备案，这个效果图也无法给大家演示啦。</p>
 <p>相信大家都已经做出相应的效果了。</p>
 
       
@@ -432,10 +431,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">冷启动</a>
               </li>
              
@@ -444,11 +439,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tinker</a>
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DrawerLayout</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tinker</a>
               </li>
             
             <div class="clearfix"></div>

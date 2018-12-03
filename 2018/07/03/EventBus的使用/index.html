@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="许恩浩">
 <meta property="og:description" content="最近一个多月，天天996有时候连最后的一天假都没有，所以更新时隔一个多月给大家分享一下EventBus的使用方法。 compile &amp;apos;org.greenrobot:eventbus:3.0.0&amp;apos; 这个是我使用的EventBus的版本号大家可以自行选择，版本不一样但方法大都类似。">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/MessageEvent.png">
-<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/Event_MainActivity.png">
-<meta property="og:image" content="http://p92o6yr9p.bkt.clouddn.com/Event_Main2Activity.png">
-<meta property="og:updated_time" content="2018-07-03T08:35:18.820Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/MessageEvent.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/Event_MainActivity.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/Event_Main2Activity.png">
+<meta property="og:updated_time" content="2018-12-03T02:21:11.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventBus的使用">
 <meta name="twitter:description" content="最近一个多月，天天996有时候连最后的一天假都没有，所以更新时隔一个多月给大家分享一下EventBus的使用方法。 compile &amp;apos;org.greenrobot:eventbus:3.0.0&amp;apos; 这个是我使用的EventBus的版本号大家可以自行选择，版本不一样但方法大都类似。">
-<meta name="twitter:image" content="http://p92o6yr9p.bkt.clouddn.com/MessageEvent.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/MessageEvent.png">
   
     <link rel="alternative" href="/atom.xml" title="许恩浩" type="application/atom+xml">
   
@@ -175,7 +175,7 @@
 <pre><code>compile &apos;org.greenrobot:eventbus:3.0.0&apos;
 </code></pre><p>这个是我使用的EventBus的版本号大家可以自行选择，版本不一样但方法大都类似。<br><a id="more"></a></p>
 <p>首先如果你要接受这个指定的EventBus的时间必须先注册，注册后才可以接受的指定的事件。一般在base的onDestory方法里注销掉EventBus的事件。</p>
-<p>我们要自己指定一个MessageEvent说白了就是新建一个Bean类。<br><img src="http://p92o6yr9p.bkt.clouddn.com/MessageEvent.png" alt=""><br>这个是我自定义的事件，<br>下面来看主界面也就是接受消息的界面：<br><img src="http://p92o6yr9p.bkt.clouddn.com/Event_MainActivity.png" alt=""><br>这是跳转发送消息的界面：<br><img src="http://p92o6yr9p.bkt.clouddn.com/Event_Main2Activity.png" alt=""><br>相信大家都看得懂注释。<br>几个重要的点：<br>1.这个接受事件的方法必须是public修饰<br>2.方法上必须有@subscribe修饰<br>(threadMode = ThreadMode.MAIN)至于这个就是接受事件在主线程中.也可以在括号里加上sticky = true 这个是粘性事件的开关，可以记录上一次的值，称为粘性。<br>效果图链接！<br><a href="http://p92o6yr9p.bkt.clouddn.com/Event_Result.mp4" target="_blank" rel="noopener">http://p92o6yr9p.bkt.clouddn.com/Event_Result.mp4</a></p>
+<p>我们要自己指定一个MessageEvent说白了就是新建一个Bean类。<br><img src="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/MessageEvent.png" alt=""><br>这个是我自定义的事件，<br>下面来看主界面也就是接受消息的界面：<br><img src="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/Event_MainActivity.png" alt=""><br>这是跳转发送消息的界面：<br><img src="https://raw.githubusercontent.com/XuEnhao/xuenhao.github.io/master/img/Event_Main2Activity.png" alt=""><br>相信大家都看得懂注释。<br>几个重要的点：<br>1.这个接受事件的方法必须是public修饰<br>2.方法上必须有@subscribe修饰<br>(threadMode = ThreadMode.MAIN)至于这个就是接受事件在主线程中.也可以在括号里加上sticky = true 这个是粘性事件的开关，可以记录上一次的值，称为粘性。<br>效果图链接！<br>因为本域名无法在国内备案，属于特殊域名。暂时七牛云的效果图无法观看。<br><a href="http://p92o6yr9p.bkt.clouddn.com/Event_Result.mp4" target="_blank" rel="noopener">http://p92o6yr9p.bkt.clouddn.com/Event_Result.mp4</a></p>
 
       
 
@@ -427,10 +427,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">冷启动</a>
               </li>
              
@@ -439,11 +435,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tinker</a>
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DrawerLayout</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tinker</a>
               </li>
             
             <div class="clearfix"></div>
